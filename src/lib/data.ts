@@ -166,7 +166,7 @@ export const about = {
   heading: "About me",
   paragraphs: [
     "I'm John Patrick D. Asuncion, an Information Technology student at National University and a full-stack developer from Baliuag, Bulacan, Philippines. I build web and mobile applications and usually work across the whole stack: database design, server logic and the interface people use.",
-    "My recent work includes an online store with GCash payments and a delivery workflow, a Flutter marketplace for gamers with tournament brackets, and the web dashboard for CrayThrive, a team project that helps crayfish keepers monitor their tanks.",
+    "My recent work includes an online store with GCash payments and a delivery workflow, a service-booking marketplace built with PHP and MySQL, a Flutter marketplace for gamers with tournament brackets, and the web dashboard for CrayThrive, a team project that helps crayfish keepers monitor their tanks.",
     "I care about software that keeps working when real people use it: checkouts that can't oversell stock, access rules enforced by the database, and dashboards that flag problems before they grow.",
   ],
   /** "What I build" list in the About section. */
@@ -254,7 +254,7 @@ export const projects: Project[] = [
   {
     name: "CrayThrive",
     description:
-      "Web dashboard for CrayThrive, a platform that helps crayfish keepers monitor their tanks, review water quality and run a crayfish-only marketplace. Team project: built the web dashboard.",
+      "Web dashboard for CrayThrive, a platform that helps crayfish keepers monitor tanks and water quality. Team project: built the web dashboard.",
     role: "Web dashboard developer",
     tech: ["React", "Vite", "JavaScript", "Supabase", "Recharts", "React Router"],
     category: "Web",
@@ -267,6 +267,22 @@ export const projects: Project[] = [
     // The source lives in a private team repository, so only the live site is linked.
     link: "https://www.craythrive.site",
     image: "/images/projects/craythrive-landing.png",
+    featured: true,
+  },
+  {
+    name: "Hanap",
+    description:
+      "A marketplace where clients find and book verified local service providers, with separate dashboards for clients, providers and admins.",
+    role: "Full-stack developer",
+    tech: ["PHP", "MySQL", "Bootstrap", "JavaScript", "PHPMailer"],
+    category: "Web",
+    highlights: [
+      "Separate sign-ups for clients and service providers, with email OTP verification and password reset sent through PHPMailer",
+      "Admin review of provider applications: verify, reject or suspend, with status filters",
+      "Client and provider dashboards for bookings, reviews and messages",
+      "Hashed passwords and session-based access for clients, providers and admins",
+    ],
+    // No screenshot yet: the card shows the project name on the grid pattern instead.
     featured: true,
   },
 ];
@@ -299,7 +315,7 @@ export const skills: SkillGroup[] = [
   {
     category: "Frontend",
     description: "Web interfaces, routing and data visualisation.",
-    skills: ["HTML", "CSS", "JavaScript", "React", "Vite", "React Router", "Recharts"],
+    skills: ["HTML", "CSS", "JavaScript", "React", "Vite", "React Router", "Recharts", "Bootstrap"],
   },
   {
     category: "Mobile",
@@ -309,12 +325,12 @@ export const skills: SkillGroup[] = [
   {
     category: "Backend & data",
     description: "Databases, authentication, storage and access rules.",
-    skills: ["Supabase", "PostgreSQL", "Row Level Security", "Firebase Auth", "Cloud Firestore", "Firebase Storage"],
+    skills: ["PHP", "MySQL", "Supabase", "PostgreSQL", "Row Level Security", "Firebase Auth", "Cloud Firestore", "Firebase Storage"],
   },
   {
     category: "Integrations",
     description: "Payments, transactional email and event-driven updates.",
-    skills: ["PayMongo", "Resend", "Webhooks"],
+    skills: ["PayMongo", "Resend", "PHPMailer", "Webhooks"],
   },
   {
     category: "Tools & deployment",
@@ -346,9 +362,9 @@ export const cv = {
   /** Line under your name on the CV. */
   headline: "BS Information Technology Student · Full-Stack Developer",
   summary:
-    "Information Technology student at National University who builds web and mobile applications. Built an online store with GCash payments and a delivery workflow, a Flutter marketplace app with tournament brackets, and the web dashboard for a team-built crayfish tank monitoring platform.",
-  /** How many of each project's highlights are listed on the CV. */
-  projectHighlights: 2,
+    "Information Technology student at National University who builds web and mobile applications, including an online store with GCash payments, a PHP and MySQL service-booking marketplace, a Flutter marketplace app and the web dashboard of a team-built monitoring platform.",
+  /** How many of each project's highlights are listed on the CV (1 keeps four projects on one page). */
+  projectHighlights: 1,
   /** Last section of the CV. Remove the text to hide the section. */
   references: "Available upon request.",
 };

@@ -62,10 +62,10 @@ export default function CvPage() {
 
       <article className="mx-auto flex max-w-[210mm] flex-col overflow-hidden bg-white text-[12.5px] leading-relaxed text-zinc-700 shadow-2xl shadow-black/50 [print-color-adjust:exact] print:min-h-screen print:max-w-none print:text-[12px] print:leading-normal print:shadow-none">
         <header className="grid bg-[#33363d] text-white sm:grid-cols-[34%_1fr]">
-          <div className="flex items-center justify-center px-6 pt-8 sm:py-8 print:py-6">
+          <div className="flex items-center justify-center px-6 pt-8 sm:py-8 print:py-5">
             <Avatar />
           </div>
-          <div className="flex flex-col justify-center px-6 pt-4 pb-8 text-center sm:py-8 sm:pr-10 sm:pl-2 sm:text-left print:py-6">
+          <div className="flex flex-col justify-center px-6 pt-4 pb-8 text-center sm:py-8 sm:pr-10 sm:pl-2 sm:text-left print:py-5">
             <h1 className="text-[32px] leading-tight font-light tracking-tight">{profile.name}</h1>
             <p className="mt-2 text-[15px] text-white/80">{cv.headline}</p>
           </div>
@@ -153,7 +153,7 @@ export default function CvPage() {
             )}
 
             <MainSection title="Projects">
-              <div className="space-y-4 print:space-y-3">
+              <div className="space-y-4 print:space-y-2.5">
                 {cvProjects.map((project) => {
                   const href = project.link ?? project.repo;
                   return (
