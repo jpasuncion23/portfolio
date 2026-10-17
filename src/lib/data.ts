@@ -11,6 +11,8 @@ export type ContactLink = {
   /** Text shown on the page, e.g. the email address or a handle. */
   display: string;
   icon: "email" | "github" | "linkedin" | "instagram";
+  /** Set to false to keep a link off the printable CV (it still shows on the site). */
+  showOnCv?: boolean;
 };
 
 export type Stat = {
@@ -56,8 +58,11 @@ export type SkillGroup = {
 export type Education = {
   school: string;
   degree: string;
-  start: string;
-  end: string;
+  /** Years, e.g. "2023" and "2027". Leave out until you want them shown. */
+  start?: string;
+  end?: string;
+  /** Shown when there are no years, e.g. "Currently enrolled". */
+  status?: string;
   details?: string;
 };
 
@@ -90,7 +95,7 @@ export const profile = {
   siteUrl: "https://your-name.vercel.app",
   /** Shown by Google and in link previews. Aim for 120–160 characters. */
   siteDescription:
-    "Portfolio of John Patrick D. Asuncion, a full-stack developer from Baliuag, Bulacan building web, mobile and IoT applications.",
+    "Portfolio of John Patrick D. Asuncion, an IT student at National University building web, mobile and IoT applications.",
   /** Open Graph locale, e.g. "en_US" or "en_PH". */
   locale: "en_PH",
 };
@@ -124,7 +129,13 @@ export const hero = {
 export const contact: ContactLink[] = [
   { label: "Email", href: "mailto:jpasuncion2328@gmail.com", display: "jpasuncion2328@gmail.com", icon: "email" },
   { label: "GitHub", href: "https://github.com/jpasuncion23", display: "@jpasuncion23", icon: "github" },
-  { label: "Instagram", href: "https://www.instagram.com/jp.asuncionn", display: "@jp.asuncionn", icon: "instagram" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/jp.asuncionn",
+    display: "@jp.asuncionn",
+    icon: "instagram",
+    showOnCv: false,
+  },
 ];
 
 export const contactSection = {
@@ -150,7 +161,7 @@ export const about = {
   eyebrow: "About",
   heading: "About me",
   paragraphs: [
-    "I'm John Patrick D. Asuncion, a full-stack developer from Baliuag, Bulacan, Philippines. I build web, mobile and IoT applications and usually work across the whole stack: database design, server logic and the interface people use.",
+    "I'm John Patrick D. Asuncion, an Information Technology student at National University and a full-stack developer from Baliuag, Bulacan, Philippines. I build web, mobile and IoT applications and usually work across the whole stack: database design, server logic and the interface people use.",
     "My recent work includes an online store with GCash payments and a delivery workflow, a Flutter marketplace for gamers with tournament brackets, and the web dashboard for CrayThrive, a team-built IoT system that monitors crayfish tanks.",
     "I care about software that keeps working when real people use it: checkouts that can't oversell stock, access rules enforced by the database, and dashboards that flag problems before they grow.",
   ],
@@ -176,6 +187,7 @@ export const about = {
   availabilityTitle: "Currently",
   /** Short facts shown on the profile cards (location and availability come from `profile`). */
   facts: [
+    { label: "Education", value: "BSIT, National University" },
     { label: "Focus", value: "Web, mobile and IoT applications" },
     { label: "Languages", value: "English, Filipino" },
   ],
@@ -238,7 +250,7 @@ export const projects: Project[] = [
   {
     name: "CrayThrive",
     description:
-      "A smart aquaculture system for crayfish keepers that combines IoT tank sensors, a mobile app and a web dashboard. Team project; I built the web dashboard.",
+      "A smart aquaculture system for crayfish keepers that combines IoT tank sensors, a mobile app and a web dashboard. Team project: built the web dashboard.",
     role: "Web dashboard developer",
     tech: ["React", "Vite", "JavaScript", "Supabase", "Recharts", "React Router"],
     category: "IoT",
@@ -311,32 +323,26 @@ export const skills: SkillGroup[] = [
 
 export const education: Education[] = [
   {
-    school: "Your University",
-    degree: "BS in Computer Science",
-    start: "2020",
-    end: "2024",
-    details: "Placeholder: honors, thesis, or relevant coursework.",
+    school: "National University",
+    degree: "Bachelor of Science in Information Technology",
+    status: "Currently enrolled",
   },
 ];
 
-export const experience: Experience[] = [
-  {
-    company: "Company Name",
-    position: "Junior Developer",
-    start: "2024",
-    end: "Present",
-    location: "Remote",
-    points: [
-      "Placeholder: what you built or improved",
-      "Placeholder: a result with a number if possible",
-    ],
-  },
-  {
-    company: "Another Company",
-    position: "Developer Intern",
-    start: "2023",
-    end: "2023",
-    location: "Manila",
-    points: ["Placeholder: what you worked on during the internship"],
-  },
-];
+/**
+ * Work experience (jobs, OJT, freelance). Empty for now, so the CV hides the
+ * section. Example entry:
+ * { company: "Company", position: "IT Intern", start: "2026", end: "2026", location: "Bulacan", points: ["What you did"] }
+ */
+export const experience: Experience[] = [];
+
+// ---------- CV ----------
+
+export const cv = {
+  /** Line under your name on the CV. */
+  headline: "BS Information Technology Student · Full-Stack Developer",
+  summary:
+    "Information Technology student at National University who builds web, mobile and IoT applications. Built an online store with GCash payments and a delivery workflow, a Flutter marketplace app with tournament brackets, and the web dashboard of a team-built IoT aquaculture system.",
+  /** How many of each project's highlights are listed on the CV. */
+  projectHighlights: 2,
+};

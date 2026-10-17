@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { contact, education, experience, profile, projects, skills } from "@/lib/data";
+import { contact, cv, education, experience, profile, projects, skills } from "@/lib/data";
 import { displayUrl } from "@/lib/utils";
 import { PrintButton } from "@/components/cv/PrintButton";
 import { ArrowRightIcon } from "@/components/ui/icons";
 
-const description = `CV of ${profile.name}, ${profile.title} based in ${profile.location}.`;
+const description = `CV of ${profile.name}, ${cv.headline}, based in ${profile.location}.`;
 
 export const metadata: Metadata = {
   title: "CV",
@@ -26,8 +26,15 @@ const cvProjects = projects.some((project) => project.featured)
   ? projects.filter((project) => project.featured)
   : projects.slice(0, 3);
 
-function dateRange(start: string, end: string) {
-  return start === end ? start : `${start} – ${end}`;
+const cvLinks = [
+  ...contact.filter((link) => link.showOnCv !== false),
+  { label: "Website", href: profile.siteUrl },
+];
+
+function dateRange(start?: string, end?: string) {
+  if (!start) return end ?? "";
+  if (!end || start === end) return start;
+  return `${start} – ${end}`;
 }
 
 /*
@@ -46,15 +53,16 @@ export default function CvPage() {
         <PrintButton />
       </div>
 
-      <article className="mx-auto max-w-[210mm] rounded-sm bg-white p-6 text-[13px] leading-relaxed text-zinc-700 shadow-2xl shadow-black/50 sm:p-[14mm] print:max-w-none print:rounded-none print:p-0 print:shadow-none">
+      {/* Slightly tighter line height when printing so it fits one US Letter page as well as A4. */}
+      <article className="mx-auto max-w-[210mm] rounded-sm bg-white p-6 text-[13px] leading-relaxed text-zinc-700 shadow-2xl shadow-black/50 sm:p-[14mm] print:max-w-none print:rounded-none print:p-0 print:leading-normal print:shadow-none">
         <header className="flex flex-col gap-4 border-b-2 border-teal-600 pb-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-zinc-900">{profile.name}</h1>
-            <p className="mt-0.5 text-base font-medium text-teal-700">{profile.title}</p>
+            <p className="mt-0.5 text-base font-medium text-teal-700">{cv.headline}</p>
             <p className="text-zinc-500">{profile.location}</p>
           </div>
           <ul className="space-y-0.5 text-zinc-600 sm:text-right">
-            {[...contact, { label: "Website", href: profile.siteUrl }].map((link) => (
+            {cvLinks.map((link) => (
               <li key={link.label}>
                 <span className="sr-only">{link.label}: </span>
                 <a href={link.href} className="hover:text-teal-700">
@@ -66,39 +74,51 @@ export default function CvPage() {
         </header>
 
         <CvSection title="Summary" className="mt-5">
-          <p>{profile.intro}</p>
+          <p>{cv.summary}</p>
         </CvSection>
 
-        <div className="mt-5 grid gap-x-8 gap-y-5 sm:grid-cols-[1fr_32%]">
+        <div className="mt-5 grid gap-x-8 gap-y-5 sm:grid-cols-[1fr_30%]">
           <div className="space-y-5">
-            <CvSection title="Experience">
-              <div className="space-y-4">
-                {experience.map((job) => (
-                  <div key={`${job.company}-${job.position}`} className="break-inside-avoid">
-                    <EntryHeading title={job.position} date={dateRange(job.start, job.end)} />
-                    <p className="text-zinc-500">
-                      {job.company}
-                      {job.location && ` · ${job.location}`}
-                    </p>
-                    <ul className="mt-1 list-disc space-y-0.5 pl-4 marker:text-zinc-400">
-                      {job.points.map((point) => (
-                        <li key={point}>{point}</li>
-                      ))}
-                    </ul>
+            <CvSection title="Education">
+              <div className="space-y-3">
+                {education.map((school) => (
+                  <div key={`${school.school}-${school.degree}`} className="break-inside-avoid">
+                    <EntryHeading title={school.degree} date={dateRange(school.start, school.end) || school.status || ""} />
+                    <p className="text-zinc-500">{school.school}</p>
+                    {school.details && <p className="mt-1">{school.details}</p>}
                   </div>
                 ))}
               </div>
             </CvSection>
 
+            {/* Only shown once there's real experience in data.ts. */}
+            {experience.length > 0 && (
+              <CvSection title="Experience">
+                <div className="space-y-4">
+                  {experience.map((job) => (
+                    <div key={`${job.company}-${job.position}`} className="break-inside-avoid">
+                      <EntryHeading title={job.position} date={dateRange(job.start, job.end)} />
+                      <p className="text-zinc-500">
+                        {job.company}
+                        {job.location && ` · ${job.location}`}
+                      </p>
+                      <BulletList items={job.points} />
+                    </div>
+                  ))}
+                </div>
+              </CvSection>
+            )}
+
             <CvSection title="Projects">
-              <div className="space-y-3.5">
+              <div className="space-y-4 print:space-y-3">
                 {cvProjects.map((project) => {
                   const href = project.link ?? project.repo;
                   return (
                     <div key={project.name} className="break-inside-avoid">
                       <EntryHeading title={project.name} date={project.role} />
                       <p>{project.description}</p>
-                      <p className="mt-0.5 text-zinc-500">
+                      <BulletList items={project.highlights.slice(0, cv.projectHighlights)} />
+                      <p className="mt-1 text-zinc-500">
                         {project.tech.join(" · ")}
                         {href && (
                           <>
@@ -127,19 +147,6 @@ export default function CvPage() {
                 ))}
               </dl>
             </CvSection>
-
-            <CvSection title="Education">
-              <div className="space-y-3">
-                {education.map((school) => (
-                  <div key={`${school.school}-${school.degree}`} className="break-inside-avoid">
-                    <p className="font-semibold text-zinc-900">{school.degree}</p>
-                    <p>{school.school}</p>
-                    <p className="text-zinc-500">{dateRange(school.start, school.end)}</p>
-                    {school.details && <p className="mt-1">{school.details}</p>}
-                  </div>
-                ))}
-              </div>
-            </CvSection>
           </div>
         </div>
       </article>
@@ -164,5 +171,15 @@ function EntryHeading({ title, date }: { title: string; date: string }) {
       <h3 className="font-semibold text-zinc-900">{title}</h3>
       <span className="text-xs text-zinc-500 tabular-nums">{date}</span>
     </div>
+  );
+}
+
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul className="mt-1 list-disc space-y-0.5 pl-4 marker:text-zinc-400">
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
   );
 }
