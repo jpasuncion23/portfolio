@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { contact, education, experience, profile, projects, skills } from "@/lib/data";
+import { displayUrl } from "@/lib/utils";
 import { PrintButton } from "@/components/cv/PrintButton";
 import { ArrowRightIcon } from "@/components/ui/icons";
 
@@ -24,11 +25,6 @@ export const metadata: Metadata = {
 const cvProjects = projects.some((project) => project.featured)
   ? projects.filter((project) => project.featured)
   : projects.slice(0, 3);
-
-/** "https://www.github.com/me" -> "github.com/me", "mailto:a@b.c" -> "a@b.c". Reads well on paper. */
-function printableUrl(href: string) {
-  return href.replace(/^mailto:/, "").replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
-}
 
 function dateRange(start: string, end: string) {
   return start === end ? start : `${start} – ${end}`;
@@ -62,7 +58,7 @@ export default function CvPage() {
               <li key={link.label}>
                 <span className="sr-only">{link.label}: </span>
                 <a href={link.href} className="hover:text-teal-700">
-                  {printableUrl(link.href)}
+                  {displayUrl(link.href)}
                 </a>
               </li>
             ))}
@@ -108,7 +104,7 @@ export default function CvPage() {
                           <>
                             {" · "}
                             <a href={href} className="text-teal-700">
-                              {printableUrl(href)}
+                              {displayUrl(href)}
                             </a>
                           </>
                         )}

@@ -13,6 +13,11 @@ export function getInitials(name: string) {
     .toUpperCase();
 }
 
+/** "https://www.github.com/me" -> "github.com/me", "mailto:a@b.c" -> "a@b.c". */
+export function displayUrl(href: string) {
+  return href.replace(/^mailto:/, "").replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+}
+
 /**
  * Theme colors for places CSS variables can't reach (generated images,
  * browser theme color). Keep in sync with the tokens in globals.css.

@@ -135,6 +135,15 @@ export const about = {
 
 // ---------- Projects ----------
 
+export const workSection = {
+  eyebrow: "// featured work",
+  title: "Selected projects",
+  description: "A few things I've built recently: what each one does, how it's made, and where to try it.",
+  filterAll: "All",
+  liveLabel: "Live site",
+  sourceLabel: "Source code",
+};
+
 export const projects: Project[] = [
   {
     name: "Brass & Thread",

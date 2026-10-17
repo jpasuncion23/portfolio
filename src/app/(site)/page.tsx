@@ -1,5 +1,6 @@
-import { contact, hero, nav, profile } from "@/lib/data";
+import { contact, hero, profile } from "@/lib/data";
 import Hero from "@/components/sections/Hero";
+import Work from "@/components/sections/Work";
 import { Section } from "@/components/ui/Section";
 
 // Structured data so search engines know this page is about a person.
@@ -16,6 +17,19 @@ const personJsonLd = {
   sameAs: contact.filter((link) => link.href.startsWith("http")).map((link) => link.href),
 };
 
+// Temporary stand-in so a nav link has somewhere to go. Each is replaced as its section is built.
+function ComingSoon({ id, label }: { id: string; label: string }) {
+  return (
+    <Section
+      id={id}
+      eyebrow={`// ${label.toLowerCase()}`}
+      title={`${label} section`}
+      description="Coming soon."
+      className="min-h-[60svh]"
+    />
+  );
+}
+
 export default function Home() {
   return (
     <main id="main" className="flex-1">
@@ -25,18 +39,10 @@ export default function Home() {
       />
 
       <Hero />
-
-      {/* Temporary stand-ins so the nav links have somewhere to go. Replaced as each section is built. */}
-      {nav.map((item) => (
-        <Section
-          key={item.href}
-          id={item.href.slice(1)}
-          eyebrow={`// ${item.label.toLowerCase()}`}
-          title={`${item.label} section`}
-          description="Coming soon."
-          className="min-h-[60svh]"
-        />
-      ))}
+      <ComingSoon id="about" label="About" />
+      <Work />
+      <ComingSoon id="skills" label="Skills" />
+      <ComingSoon id="contact" label="Contact" />
     </main>
   );
 }
