@@ -85,8 +85,10 @@ function ProjectImage({ project }: { project: Project }) {
           src={project.image}
           alt={`Screenshot of ${project.name}`}
           fill
-          sizes="(min-width: 1024px) 34rem, 92vw"
-          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+          quality={95}
+          // Matches the rendered width (page gutter + card padding) so the browser picks a sharp enough file.
+          sizes="(min-width: 1024px) 31rem, (min-width: 640px) calc(100vw - 6.5rem), calc(100vw - 4.75rem)"
+          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
         />
       ) : (
         <div aria-hidden="true" className="absolute inset-0 isolate grid place-items-center">
