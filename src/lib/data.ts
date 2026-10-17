@@ -10,7 +10,7 @@ export type ContactLink = {
   href: string;
   /** Text shown on the page, e.g. the email address or a handle. */
   display: string;
-  icon: "email" | "github" | "linkedin";
+  icon: "email" | "github" | "linkedin" | "instagram";
 };
 
 export type Stat = {
@@ -71,11 +71,11 @@ export type Experience = {
 // ---------- Profile ----------
 
 export const profile = {
-  name: "Your Name",
+  name: "John Patrick D. Asuncion",
   title: "Full-Stack Developer",
   intro:
     "I design and build reliable web and mobile applications, from the database to the user interface. Placeholder: replace with one or two sentences about your work.",
-  location: "Manila, Philippines",
+  location: "Baliuag, Bulacan, Philippines",
   availability: "Open to opportunities",
   /**
    * Your photo, as a path under /public (e.g. "/images/profile.jpg").
@@ -88,7 +88,7 @@ export const profile = {
   siteUrl: "https://your-name.vercel.app",
   /** Shown by Google and in link previews. Aim for 120–160 characters. */
   siteDescription:
-    "Portfolio of Your Name, a full-stack developer in Manila building fast, accessible web apps with Next.js, TypeScript and Node.js.",
+    "Portfolio of John Patrick D. Asuncion, a full-stack developer from Baliuag, Bulacan building web, mobile and IoT applications.",
   /** Open Graph locale, e.g. "en_US" or "en_PH". */
   locale: "en_PH",
 };
@@ -120,9 +120,9 @@ export const hero = {
 };
 
 export const contact: ContactLink[] = [
-  { label: "Email", href: "mailto:you@example.com", display: "you@example.com", icon: "email" },
-  { label: "GitHub", href: "https://github.com/your-handle", display: "@your-handle", icon: "github" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/your-handle", display: "in/your-handle", icon: "linkedin" },
+  { label: "Email", href: "mailto:jpasuncion2328@gmail.com", display: "jpasuncion2328@gmail.com", icon: "email" },
+  { label: "GitHub", href: "https://github.com/jpasuncion23", display: "@jpasuncion23", icon: "github" },
+  { label: "Instagram", href: "https://www.instagram.com/jp.asuncionn", display: "@jp.asuncionn", icon: "instagram" },
 ];
 
 export const stats: Stat[] = [
