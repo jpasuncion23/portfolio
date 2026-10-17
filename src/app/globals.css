@@ -80,10 +80,14 @@ body {
   mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, black 30%, transparent 100%);
 }
 
-/* Printing (used by /cv): white paper, no dark site background. */
+/*
+  Printing (used by /cv): white paper, no dark site background. No page
+  margin, so the CV's header band and sidebar reach the paper's edges; the
+  CV supplies its own padding.
+*/
 @media print {
   @page {
-    margin: 12mm;
+    margin: 0;
   }
 
   html,

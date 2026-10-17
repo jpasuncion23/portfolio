@@ -23,14 +23,13 @@ export type Stat = {
   label: string;
 };
 
-export const projectCategories = ["Web", "Mobile", "IoT"] as const;
+export const projectCategories = ["Web", "Mobile"] as const;
 export type ProjectCategory = (typeof projectCategories)[number];
 
 /** How each category reads in the "Type" cell under a project image. */
 export const categoryTypes: Record<ProjectCategory, string> = {
   Web: "Web app",
   Mobile: "Mobile app",
-  IoT: "IoT system",
 };
 
 export type Project = {
@@ -81,7 +80,7 @@ export const profile = {
   name: "John Patrick D. Asuncion",
   title: "Full-Stack Developer",
   intro:
-    "I build web, mobile and IoT applications, from the database and server logic to the interface people use every day.",
+    "I build web and mobile applications, from the database and server logic to the interface people use every day.",
   location: "Baliuag, Bulacan, Philippines",
   availability: "Open to opportunities",
   /**
@@ -95,7 +94,7 @@ export const profile = {
   siteUrl: "https://your-name.vercel.app",
   /** Shown by Google and in link previews. Aim for 120–160 characters. */
   siteDescription:
-    "Portfolio of John Patrick D. Asuncion, an IT student at National University building web, mobile and IoT applications.",
+    "Portfolio of John Patrick D. Asuncion, an IT student at National University building web and mobile applications.",
   /** Open Graph locale, e.g. "en_US" or "en_PH". */
   locale: "en_PH",
 };
@@ -161,8 +160,8 @@ export const about = {
   eyebrow: "About",
   heading: "About me",
   paragraphs: [
-    "I'm John Patrick D. Asuncion, an Information Technology student at National University and a full-stack developer from Baliuag, Bulacan, Philippines. I build web, mobile and IoT applications and usually work across the whole stack: database design, server logic and the interface people use.",
-    "My recent work includes an online store with GCash payments and a delivery workflow, a Flutter marketplace for gamers with tournament brackets, and the web dashboard for CrayThrive, a team-built IoT system that monitors crayfish tanks.",
+    "I'm John Patrick D. Asuncion, an Information Technology student at National University and a full-stack developer from Baliuag, Bulacan, Philippines. I build web and mobile applications and usually work across the whole stack: database design, server logic and the interface people use.",
+    "My recent work includes an online store with GCash payments and a delivery workflow, a Flutter marketplace for gamers with tournament brackets, and the web dashboard for CrayThrive, a team project that helps crayfish keepers monitor their tanks.",
     "I care about software that keeps working when real people use it: checkouts that can't oversell stock, access rules enforced by the database, and dashboards that flag problems before they grow.",
   ],
   /** "What I build" list in the About section. */
@@ -170,7 +169,7 @@ export const about = {
   focus: [
     {
       title: "Web applications",
-      description: "Storefronts and admin dashboards with sign-in, payments, email notifications and reports.",
+      description: "Storefronts and web apps with sign-in, payments, email notifications and order tracking.",
       tech: "React · Supabase · PostgreSQL",
     },
     {
@@ -179,8 +178,8 @@ export const about = {
       tech: "Flutter · Firebase",
     },
     {
-      title: "IoT dashboards",
-      description: "Web views for sensor readings, alerts and thresholds coming from connected devices.",
+      title: "Admin dashboards",
+      description: "Back-office views with charts, reports, alerts and user management for the people running a system.",
       tech: "React · Supabase · Recharts",
     },
   ],
@@ -188,7 +187,7 @@ export const about = {
   /** Short facts shown on the profile cards (location and availability come from `profile`). */
   facts: [
     { label: "Education", value: "BSIT, National University" },
-    { label: "Focus", value: "Web, mobile and IoT applications" },
+    { label: "Focus", value: "Web and mobile applications" },
     { label: "Languages", value: "English, Filipino" },
   ],
 };
@@ -250,10 +249,10 @@ export const projects: Project[] = [
   {
     name: "CrayThrive",
     description:
-      "A smart aquaculture system for crayfish keepers that combines IoT tank sensors, a mobile app and a web dashboard. Team project: built the web dashboard.",
+      "Web dashboard for CrayThrive, a platform that helps crayfish keepers monitor their tanks, review water quality and run a crayfish-only marketplace. Team project: built the web dashboard.",
     role: "Web dashboard developer",
     tech: ["React", "Vite", "JavaScript", "Supabase", "Recharts", "React Router"],
-    category: "IoT",
+    category: "Web",
     highlights: [
       "Tank monitoring with temperature, pH, turbidity, water level and ammonia readings from the tank sensors",
       "Alerts for out-of-range readings, feeding and pump activity, with adjustable thresholds",
@@ -342,7 +341,9 @@ export const cv = {
   /** Line under your name on the CV. */
   headline: "BS Information Technology Student · Full-Stack Developer",
   summary:
-    "Information Technology student at National University who builds web, mobile and IoT applications. Built an online store with GCash payments and a delivery workflow, a Flutter marketplace app with tournament brackets, and the web dashboard of a team-built IoT aquaculture system.",
+    "Information Technology student at National University who builds web and mobile applications. Built an online store with GCash payments and a delivery workflow, a Flutter marketplace app with tournament brackets, and the web dashboard for a team-built crayfish tank monitoring platform.",
   /** How many of each project's highlights are listed on the CV. */
   projectHighlights: 2,
+  /** Last section of the CV. Remove the text to hide the section. */
+  references: "Available upon request.",
 };
