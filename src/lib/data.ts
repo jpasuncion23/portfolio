@@ -21,7 +21,7 @@ export type Stat = {
   label: string;
 };
 
-export const projectCategories = ["Web", "Mobile", "Backend", "Tools"] as const;
+export const projectCategories = ["Web", "Mobile"] as const;
 export type ProjectCategory = (typeof projectCategories)[number];
 
 export type Project = {
@@ -137,58 +137,37 @@ export const about = {
 
 export const projects: Project[] = [
   {
-    name: "Project One",
+    name: "Brass & Thread",
     description:
-      "Placeholder description. A web app that solves a specific problem for a specific group of users.",
+      "An online store for overrun shirts, with ShopTrack, an admin dashboard for inventory and orders, and a driver portal for deliveries.",
     role: "Full-stack developer",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL"],
+    tech: ["JavaScript", "HTML", "CSS", "Supabase", "PostgreSQL", "PayMongo", "Resend"],
     category: "Web",
     highlights: [
-      "Placeholder highlight: a measurable result",
-      "Placeholder highlight: an interesting technical challenge",
-      "Placeholder highlight: something you're proud of",
+      "GCash payments through PayMongo, with orders marked paid automatically by a webhook",
+      "Checkout runs as one database transaction that re-checks stock, so two buyers can't take the last unit",
+      "One login that sends customers, admins and drivers to their own views, enforced by Row Level Security",
+      "Drivers mark deliveries from their phone with a required proof-of-delivery photo; customers get status emails and can track orders by number",
     ],
-    link: "https://example.com",
-    repo: "https://github.com/your-handle/project-one",
-    image: "/images/projects/project-one.png",
+    link: "https://brassthread.netlify.app",
+    repo: "https://github.com/jpasuncion23/brass-and-thread",
     featured: true,
   },
   {
-    name: "Project Two",
-    description: "Placeholder description. A cross-platform mobile app.",
+    name: "GameLink",
+    description:
+      "A marketplace app where gamers post rank-boosting or coaching requests and approved sellers send offers, plus community tournaments with brackets.",
     role: "Mobile developer",
-    tech: ["React Native", "Expo", "Firebase"],
+    tech: ["Flutter", "Dart", "Firebase Auth", "Cloud Firestore", "Firebase Storage"],
     category: "Mobile",
     highlights: [
-      "Placeholder highlight: offline support",
-      "Placeholder highlight: push notifications",
+      "Buyer, seller and admin roles: admins approve seller applications and resolve disputes",
+      "Requests for 9 games, each with its own rank ladder, plus offers, real-time chat and reviews",
+      "Tournament registration with a single-elimination bracket generated automatically when the last slot fills",
+      "Runs on Android, web and Windows from one codebase",
     ],
-    repo: "https://github.com/your-handle/project-two",
-    image: "/images/projects/project-two.png",
+    repo: "https://github.com/jpasuncion23/gamelink",
     featured: true,
-  },
-  {
-    name: "Project Three",
-    description: "Placeholder description. A REST API that powers another app.",
-    role: "Backend developer",
-    tech: ["Node.js", "Express", "MongoDB", "Docker"],
-    category: "Backend",
-    highlights: [
-      "Placeholder highlight: authentication and roles",
-      "Placeholder highlight: automated tests and CI",
-    ],
-    repo: "https://github.com/your-handle/project-three",
-    image: "/images/projects/project-three.png",
-  },
-  {
-    name: "Project Four",
-    description: "Placeholder description. A small tool or script that saves time.",
-    role: "Solo developer",
-    tech: ["Python", "CLI"],
-    category: "Tools",
-    highlights: ["Placeholder highlight: who uses it and why"],
-    repo: "https://github.com/your-handle/project-four",
-    image: "/images/projects/project-four.png",
   },
 ];
 
