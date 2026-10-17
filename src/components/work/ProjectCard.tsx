@@ -58,32 +58,71 @@ export function ProjectCard({ project }: { project: Project }) {
   );
 }
 
-/** A screenshot when the project has one; otherwise a browser or phone mockup. */
+/**
+ * The card's visual: the project's screenshot framed as a browser window (web)
+ * or an app window (mobile), or a sketched mockup when there's no screenshot.
+ */
 function ProjectCover({ project }: { project: Project }) {
-  const frame =
-    "relative isolate flex min-h-60 items-center justify-center overflow-hidden border-b border-border bg-surface-2/50 sm:min-h-72 lg:border-r lg:border-b-0";
+  return (
+    <div
+      aria-hidden={project.image ? undefined : true}
+      className="relative isolate flex min-h-60 items-center justify-center overflow-hidden border-b border-border bg-surface-2/50 p-5 sm:min-h-72 sm:p-10 lg:border-r lg:border-b-0"
+    >
+      <div className="bg-grid absolute inset-0 -z-10 opacity-70" />
+      <div className="absolute -z-10 size-64 rounded-full bg-accent/15 blur-3xl transition-transform duration-700 group-hover:scale-125" />
+      <div className="flex w-full justify-center transition-transform duration-500 group-hover:-translate-y-1">
+        {project.image ? (
+          <Screenshot project={project} src={project.image} />
+        ) : project.category === "Mobile" ? (
+          <PhoneMock project={project} />
+        ) : (
+          <BrowserMock project={project} />
+        )}
+      </div>
+    </div>
+  );
+}
 
-  if (project.image) {
+function Screenshot({ project, src }: { project: Project; src: string }) {
+  // width/height 0 + w-full h-auto keeps each screenshot's own aspect ratio.
+  const image = (
+    <Image
+      src={src}
+      alt={`Screenshot of ${project.name}`}
+      width={0}
+      height={0}
+      sizes="(min-width: 1024px) 40vw, 90vw"
+      className="h-auto w-full"
+    />
+  );
+
+  if (project.category === "Mobile") {
     return (
-      <div className={frame}>
-        <Image
-          src={project.image}
-          alt={`Screenshot of ${project.name}`}
-          fill
-          sizes="(min-width: 1024px) 45vw, 100vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-        />
+      <div className="w-full max-w-72 rounded-[1.25rem] border border-border bg-background p-1.5 shadow-2xl shadow-black/50">
+        <div className="overflow-hidden rounded-[0.9rem]">{image}</div>
       </div>
     );
   }
 
   return (
-    <div aria-hidden="true" className={`${frame} p-6 sm:p-10`}>
-      <div className="bg-grid absolute inset-0 -z-10 opacity-70" />
-      <div className="absolute -z-10 size-64 rounded-full bg-accent/15 blur-3xl transition-transform duration-700 group-hover:scale-125" />
-      <div className="transition-transform duration-500 group-hover:-translate-y-1">
-        {project.category === "Mobile" ? <PhoneMock project={project} /> : <BrowserMock project={project} />}
-      </div>
+    <div className="w-full max-w-md overflow-hidden rounded-xl border border-border bg-background shadow-2xl shadow-black/50">
+      <BrowserBar address={project.link ?? project.repo} />
+      {image}
+    </div>
+  );
+}
+
+function BrowserBar({ address }: { address?: string }) {
+  return (
+    <div className="flex items-center gap-1.5 border-b border-border px-3 py-2.5">
+      <span className="size-2 shrink-0 rounded-full bg-border" />
+      <span className="size-2 shrink-0 rounded-full bg-border" />
+      <span className="size-2 shrink-0 rounded-full bg-border" />
+      {address && (
+        <span className="ml-2 truncate rounded-md bg-surface px-2 py-0.5 font-mono text-[10px] text-muted">
+          {displayUrl(address)}
+        </span>
+      )}
     </div>
   );
 }
@@ -93,19 +132,9 @@ function SkeletonLine({ className }: { className: string }) {
 }
 
 function BrowserMock({ project }: { project: Project }) {
-  const address = project.link ?? project.repo;
   return (
     <div className="w-72 max-w-full overflow-hidden rounded-xl border border-border bg-background/90 shadow-2xl shadow-black/50 sm:w-80">
-      <div className="flex items-center gap-1.5 border-b border-border px-3 py-2.5">
-        <span className="size-2 rounded-full bg-border" />
-        <span className="size-2 rounded-full bg-border" />
-        <span className="size-2 rounded-full bg-border" />
-        {address && (
-          <span className="ml-2 truncate rounded-md bg-surface px-2 py-0.5 font-mono text-[10px] text-muted">
-            {displayUrl(address)}
-          </span>
-        )}
-      </div>
+      <BrowserBar address={project.link ?? project.repo} />
       <div className="p-5">
         <p className="font-mono text-[10px] text-accent">{`// ${project.category.toLowerCase()}`}</p>
         <p className="mt-1 truncate text-lg font-semibold">{project.name}</p>
