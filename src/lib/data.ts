@@ -270,9 +270,9 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    name: "Hanap",
+    name: "H.A.N.A.P",
     description:
-      "A marketplace where clients find and book verified local service providers, with separate dashboards for clients, providers and admins.",
+      "Handy Access Network for Available Providers: a marketplace for booking verified local service providers, with client, provider and admin dashboards.",
     role: "Full-stack developer",
     tech: ["PHP", "MySQL", "Bootstrap", "JavaScript", "PHPMailer"],
     category: "Web",
@@ -282,7 +282,8 @@ export const projects: Project[] = [
       "Client and provider dashboards for bookings, reviews and messages",
       "Hashed passwords and session-based access for clients, providers and admins",
     ],
-    // No screenshot yet: the card shows the project name on the grid pattern instead.
+    // Captured from the local XAMPP copy; it has no images/ folder, so broken images were hidden for the shot.
+    image: "/images/projects/hanap-home.png",
     featured: true,
   },
 ];
