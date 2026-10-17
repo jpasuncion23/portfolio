@@ -45,7 +45,7 @@ export function ProjectList() {
                 )}
               >
                 {tab.label}
-                <span className={cn("font-mono text-xs", selected ? "text-accent" : "text-muted/70")}>{tab.count}</span>
+                <span className={cn("text-xs tabular-nums", selected ? "text-accent" : "text-muted/70")}>{tab.count}</span>
               </button>
             );
           })}

@@ -11,7 +11,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
       <div className="flex flex-col p-5 sm:p-8">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs">
-          <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 font-mono text-accent">
+          <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 font-medium text-accent">
             {project.category}
           </span>
           <span className="text-muted">{project.role}</span>
@@ -31,7 +31,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
         <ul aria-label="Tech stack" className="mt-6 flex flex-wrap gap-2">
           {project.tech.map((tech) => (
-            <li key={tech} className="rounded-md border border-border bg-background/60 px-2.5 py-1 font-mono text-xs text-muted">
+            <li key={tech} className="rounded-md border border-border bg-background/60 px-2.5 py-1 text-xs text-muted">
               {tech}
             </li>
           ))}

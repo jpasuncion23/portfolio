@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 type SectionProps = {
   id: string;
-  /** Small mono label above the title. */
+  /** Small uppercase label above the title. */
   eyebrow?: string;
   title: string;
   description?: string;
@@ -19,7 +19,7 @@ export function Section({ id, eyebrow, title, description, className, children }
     <section id={id} aria-labelledby={`${id}-title`} className={cn("border-t border-border/60 py-20 sm:py-28", className)}>
       <Container>
         <Reveal className="max-w-2xl">
-          {eyebrow && <p className="font-mono text-sm text-accent">{eyebrow}</p>}
+          {eyebrow && <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase">{eyebrow}</p>}
           <h2 id={`${id}-title`} className="mt-2 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
             {title}
           </h2>

@@ -22,7 +22,7 @@ function ComingSoon({ id, label }: { id: string; label: string }) {
   return (
     <Section
       id={id}
-      eyebrow={`// ${label.toLowerCase()}`}
+      eyebrow={label}
       title={`${label} section`}
       description="Coming soon."
       className="min-h-[60svh]"

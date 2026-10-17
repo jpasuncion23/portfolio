@@ -87,7 +87,7 @@ export default function Navbar() {
             onClick={close}
             className="flex min-h-11 min-w-11 items-center gap-2.5 rounded-lg font-semibold tracking-tight"
           >
-            <span className="grid size-9 place-items-center rounded-lg border border-accent/30 bg-accent/10 font-mono text-sm text-accent">
+            <span className="grid size-9 place-items-center rounded-lg border border-accent/30 bg-accent/10 text-sm font-semibold text-accent">
               {initials}
             </span>
             <span className="hidden sm:inline">{profile.name}</span>

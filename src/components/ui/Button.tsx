@@ -2,8 +2,7 @@ import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
 const variants = {
-  primary:
-    "bg-accent text-accent-foreground shadow-[0_0_28px_-8px_var(--color-accent)] hover:bg-accent/90",
+  primary: "bg-accent text-accent-foreground hover:bg-accent/90",
   outline: "border border-border bg-surface/60 text-foreground hover:border-accent/50 hover:bg-surface",
   ghost: "text-muted hover:bg-surface hover:text-foreground",
 };

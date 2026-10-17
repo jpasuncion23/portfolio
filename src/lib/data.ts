@@ -67,11 +67,14 @@ export const profile = {
   name: "Your Name",
   title: "Full-Stack Developer",
   intro:
-    "I build fast, accessible web apps with clean code and thoughtful design. Placeholder intro: replace with one or two sentences about what you do.",
+    "I design and build reliable web and mobile applications, from the database to the user interface. Placeholder: replace with one or two sentences about your work.",
   location: "Manila, Philippines",
   availability: "Open to opportunities",
-  /** Path under /public. */
-  photo: "/images/profile.jpg",
+  /**
+   * Your photo, as a path under /public (e.g. "/images/profile.jpg").
+   * Leave empty to show your initials instead.
+   */
+  photo: "",
   /** Where "Download CV" goes. "/cv" is the printable CV page built from this file. */
   cvPath: "/cv",
   /** Your live URL, no trailing slash. Used for SEO, share previews and the sitemap. */
@@ -91,16 +94,21 @@ export const nav = [
 ];
 
 /** Button on the right side of the navbar; links to #contact. */
-export const navCta = "Let's talk";
+export const navCta = "Get in touch";
 
 export const hero = {
-  greeting: "Hi there, I'm",
-  /** Shown in the code card next to the headline. */
+  /** Shown on the profile card next to the headline, and used for SEO keywords. */
   stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
   buttons: {
-    work: "View work",
-    contact: "Contact",
+    work: "View projects",
+    contact: "Contact me",
     cv: "Download CV",
+  },
+  /** Row labels on the profile card. */
+  card: {
+    location: "Location",
+    availability: "Availability",
+    stack: "Core stack",
   },
 };
 
@@ -125,10 +133,9 @@ export const about = {
     "Placeholder paragraph. Describe how you got into development and what kind of problems you enjoy solving.",
     "Placeholder paragraph. Mention what you're focused on right now and what you're looking for next.",
   ],
-  /** Short facts shown on the profile card. */
+  /** Short facts shown on the profile cards (location and availability come from `profile`). */
   facts: [
-    { label: "Based in", value: "Manila, PH" },
-    { label: "Focus", value: "Web apps" },
+    { label: "Focus", value: "Web and mobile applications" },
     { label: "Languages", value: "English, Filipino" },
   ],
 };
@@ -136,9 +143,10 @@ export const about = {
 // ---------- Projects ----------
 
 export const workSection = {
-  eyebrow: "// featured work",
-  title: "Selected projects",
-  description: "A few things I've built recently: what each one does, how it's made, and where to try it.",
+  eyebrow: "Selected work",
+  title: "Projects",
+  description:
+    "Recent projects, with the problems they solve, the technology behind them, and links to the live sites and source code.",
   filterAll: "All",
   liveLabel: "Live site",
   sourceLabel: "Source code",
