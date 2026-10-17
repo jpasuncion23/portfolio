@@ -174,7 +174,7 @@ export const projects: Project[] = [
     ],
     link: "https://brassthread.netlify.app",
     repo: "https://github.com/jpasuncion23/brass-and-thread",
-    image: "/images/projects/brass-and-thread.png",
+    image: "/images/projects/brass-and-thread-hero.png",
     featured: true,
   },
   {
@@ -191,7 +191,7 @@ export const projects: Project[] = [
       "Runs on Android, web and Windows from one codebase",
     ],
     repo: "https://github.com/jpasuncion23/gamelink",
-    image: "/images/projects/gamelink.png",
+    image: "/images/projects/gamelink-home.png",
     featured: true,
   },
 ];
