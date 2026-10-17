@@ -59,7 +59,7 @@ export function ProjectList() {
       <div className="mt-8 space-y-6 sm:space-y-8">
         {visible.map((project, index) => (
           <Reveal key={project.name} delay={Math.min(index, 3) * 80}>
-            <ProjectCard project={project} reverse={index % 2 === 1} />
+            <ProjectCard project={project} />
           </Reveal>
         ))}
       </div>

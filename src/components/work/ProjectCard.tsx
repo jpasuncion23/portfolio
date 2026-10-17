@@ -1,11 +1,10 @@
 import Image from "next/image";
 import { categoryTypes, workSection, type Project } from "@/lib/data";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon, ExternalLinkIcon, GitHubIcon } from "@/components/ui/icons";
 
-/** `reverse` puts the image on the right on wide screens, so a list of cards alternates. */
-export function ProjectCard({ project, reverse = false }: { project: Project; reverse?: boolean }) {
+/** Image on the left (on top on small screens), details on the right. */
+export function ProjectCard({ project }: { project: Project }) {
   const meta = [
     { label: workSection.meta.type, value: categoryTypes[project.category] },
     { label: workSection.meta.role, value: project.role },
@@ -14,7 +13,7 @@ export function ProjectCard({ project, reverse = false }: { project: Project; re
 
   return (
     <article className="group grid overflow-hidden rounded-2xl border border-border bg-surface/60 transition-colors duration-300 hover:border-accent/40 lg:grid-cols-2">
-      <div className={cn("border-b border-border p-5 sm:p-7 lg:border-b-0", reverse ? "lg:order-last lg:border-l" : "lg:border-r")}>
+      <div className="border-b border-border p-5 sm:p-7 lg:border-r lg:border-b-0">
         <ProjectImage project={project} />
 
         <dl className="mt-5 grid divide-y divide-border rounded-xl border border-border text-sm sm:grid-cols-3 sm:divide-x sm:divide-y-0">
