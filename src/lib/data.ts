@@ -133,7 +133,11 @@ export const contactSection = {
   description:
     "Have a project, a role or a question in mind? Email is the quickest way to reach me, and I'm also on GitHub and Instagram.",
   emailLabel: "Email",
-  sendEmail: "Send an email",
+  /** Pre-filled subject for emails started from the site. */
+  emailSubject: "Inquiry from your portfolio",
+  sendEmail: "Send via Gmail",
+  /** Fallback that opens the visitor's own email app (mailto:). */
+  emailApp: "Email app",
   copyEmail: "Copy address",
   copiedEmail: "Copied",
   cvTitle: "Curriculum vitae",

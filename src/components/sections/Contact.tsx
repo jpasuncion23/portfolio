@@ -1,4 +1,5 @@
 import { contact, contactSection, profile } from "@/lib/data";
+import { gmailComposeUrl } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { Reveal } from "@/components/ui/Reveal";
@@ -24,19 +25,23 @@ export default function Contact() {
                 <MailIcon className="size-3.5" />
                 {contactSection.emailLabel}
               </p>
-              <a
-                href={email.href}
-                className="mt-4 text-xl font-semibold tracking-tight break-all transition-colors hover:text-accent sm:text-3xl"
-              >
-                {email.display}
-              </a>
+              {/* Plain text, not a mailto: link, so clicking it never silently does nothing. */}
+              <p className="mt-4 text-xl font-semibold tracking-tight break-all select-all sm:text-3xl">{email.display}</p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Button href={email.href}>
+                <Button
+                  href={gmailComposeUrl(email.display, contactSection.emailSubject)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {contactSection.sendEmail}
-                  <ArrowRightIcon />
+                  <ExternalLinkIcon />
                 </Button>
                 <CopyButton text={email.display} label={contactSection.copyEmail} copiedLabel={contactSection.copiedEmail} />
+                <Button href={email.href} variant="ghost">
+                  <MailIcon />
+                  {contactSection.emailApp}
+                </Button>
               </div>
 
               <p className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1 pt-10 text-sm text-muted">

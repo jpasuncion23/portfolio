@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { about, contact, hero, profile } from "@/lib/data";
-import { cn, getInitials } from "@/lib/utils";
+import { about, contact, contactSection, hero, profile } from "@/lib/data";
+import { cn, contactHref, getInitials } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { ArrowRightIcon, DownloadIcon, MapPinIcon, contactIcons } from "@/components/ui/icons";
@@ -54,11 +54,12 @@ export default function Hero() {
           <ul className="mt-10 flex animate-fade-up items-center gap-2 [animation-delay:240ms]">
             {contact.map((link) => {
               const Icon = contactIcons[link.icon];
-              const external = link.href.startsWith("http");
+              const href = contactHref(link, contactSection.emailSubject);
+              const external = href.startsWith("http");
               return (
                 <li key={link.label}>
                   <a
-                    href={link.href}
+                    href={href}
                     aria-label={link.label}
                     title={link.label}
                     target={external ? "_blank" : undefined}

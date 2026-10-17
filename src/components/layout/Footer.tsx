@@ -1,4 +1,5 @@
-import { contact, profile } from "@/lib/data";
+import { contact, contactSection, profile } from "@/lib/data";
+import { contactHref } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
 import { ArrowUpIcon, contactIcons } from "@/components/ui/icons";
 
@@ -21,11 +22,12 @@ export default async function Footer() {
         <div className="flex items-center gap-2">
           {contact.map((link) => {
             const Icon = contactIcons[link.icon];
-            const external = link.href.startsWith("http");
+            const href = contactHref(link, contactSection.emailSubject);
+            const external = href.startsWith("http");
             return (
               <a
                 key={link.label}
-                href={link.href}
+                href={href}
                 aria-label={link.label}
                 title={link.label}
                 target={external ? "_blank" : undefined}

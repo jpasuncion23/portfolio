@@ -19,6 +19,24 @@ export function displayUrl(href: string) {
 }
 
 /**
+ * Where an icon-sized contact link should go. Email opens Gmail compose
+ * (see below) because a bare mailto: often does nothing on click.
+ */
+export function contactHref(link: { icon: string; href: string; display: string }, subject?: string) {
+  return link.icon === "email" ? gmailComposeUrl(link.display, subject) : link.href;
+}
+
+/**
+ * Gmail's compose window, pre-filled. Unlike `mailto:`, it works without an
+ * email app set up on the visitor's computer.
+ */
+export function gmailComposeUrl(to: string, subject?: string) {
+  const params = new URLSearchParams({ view: "cm", fs: "1", to });
+  if (subject) params.set("su", subject);
+  return `https://mail.google.com/mail/?${params}`;
+}
+
+/**
  * Theme colors for places CSS variables can't reach (generated images,
  * browser theme color). Keep in sync with the tokens in globals.css.
  */
