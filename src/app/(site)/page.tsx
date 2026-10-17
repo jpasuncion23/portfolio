@@ -1,9 +1,9 @@
-import { contact, hero, profile } from "@/lib/data";
+import { contact, profile, skills } from "@/lib/data";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
 import Hero from "@/components/sections/Hero";
+import Skills from "@/components/sections/Skills";
 import Work from "@/components/sections/Work";
-import { Section } from "@/components/ui/Section";
 
 // Structured data so search engines know this page is about a person.
 const personJsonLd = {
@@ -14,23 +14,10 @@ const personJsonLd = {
   description: profile.siteDescription,
   url: profile.siteUrl,
   address: { "@type": "PostalAddress", addressLocality: profile.location },
-  knowsAbout: hero.stack,
+  knowsAbout: skills.flatMap((group) => group.skills),
   email: contact.find((link) => link.icon === "email")?.href,
   sameAs: contact.filter((link) => link.href.startsWith("http")).map((link) => link.href),
 };
-
-// Temporary stand-in so a nav link has somewhere to go. Each is replaced as its section is built.
-function ComingSoon({ id, label }: { id: string; label: string }) {
-  return (
-    <Section
-      id={id}
-      eyebrow={label}
-      title={`${label} section`}
-      description="Coming soon."
-      className="min-h-[60svh]"
-    />
-  );
-}
 
 export default function Home() {
   return (
@@ -43,7 +30,7 @@ export default function Home() {
       <Hero />
       <About />
       <Work />
-      <ComingSoon id="skills" label="Skills" />
+      <Skills />
       <Contact />
     </main>
   );

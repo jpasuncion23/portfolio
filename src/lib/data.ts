@@ -48,6 +48,8 @@ export type Project = {
 
 export type SkillGroup = {
   category: string;
+  /** One short line under the category name. */
+  description?: string;
   skills: string[];
 };
 
@@ -105,7 +107,7 @@ export const navCta = "Get in touch";
 
 export const hero = {
   /** Shown on the profile card next to the headline, and used for SEO keywords. */
-  stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
+  stack: ["React", "Flutter", "Supabase", "Firebase"],
   buttons: {
     work: "View projects",
     contact: "Contact me",
@@ -154,7 +156,7 @@ export const about = {
     {
       title: "Web applications",
       description: "Storefronts and admin dashboards with sign-in, payments, email notifications and reports.",
-      tech: "React · Next.js · Supabase",
+      tech: "React · Supabase · PostgreSQL",
     },
     {
       title: "Mobile apps",
@@ -164,7 +166,7 @@ export const about = {
     {
       title: "IoT dashboards",
       description: "Web views for sensor readings, alerts and thresholds coming from connected devices.",
-      tech: "Supabase · Recharts",
+      tech: "React · Supabase · Recharts",
     },
   ],
   availabilityTitle: "Currently",
@@ -262,11 +264,43 @@ export const stats: Stat[] = [
 
 // ---------- Skills ----------
 
+export const skillsSection = {
+  eyebrow: "Skills",
+  title: "Tools and technologies",
+  description: "Grouped by area and drawn from the projects above, so every item here has been used in real work.",
+  usedIn: "Used in",
+};
+
+/**
+ * Skill names that match a project's `tech` entry exactly get a "Used in"
+ * line listing those projects automatically.
+ */
 export const skills: SkillGroup[] = [
-  { category: "Frontend", skills: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS"] },
-  { category: "Backend", skills: ["Node.js", "Express", "REST APIs", "PostgreSQL", "MongoDB"] },
-  { category: "Tools", skills: ["Git", "GitHub", "VS Code", "Figma", "Docker"] },
-  { category: "Other", skills: ["Responsive design", "Accessibility", "Agile"] },
+  {
+    category: "Frontend",
+    description: "Web interfaces, routing and data visualisation.",
+    skills: ["HTML", "CSS", "JavaScript", "React", "Vite", "React Router", "Recharts"],
+  },
+  {
+    category: "Mobile",
+    description: "Cross-platform apps for Android, web and desktop.",
+    skills: ["Flutter", "Dart"],
+  },
+  {
+    category: "Backend & data",
+    description: "Databases, authentication, storage and access rules.",
+    skills: ["Supabase", "PostgreSQL", "Row Level Security", "Firebase Auth", "Cloud Firestore", "Firebase Storage"],
+  },
+  {
+    category: "Integrations",
+    description: "Payments, transactional email and event-driven updates.",
+    skills: ["PayMongo", "Resend", "Webhooks"],
+  },
+  {
+    category: "Tools & deployment",
+    description: "Version control and hosting.",
+    skills: ["Git", "GitHub", "Netlify", "Vercel"],
+  },
 ];
 
 // ---------- Education & experience ----------
