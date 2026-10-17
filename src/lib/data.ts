@@ -88,6 +88,11 @@ export const profile = {
    * Leave empty to show your initials instead.
    */
   photo: "",
+  /** Contact number. Shown on the CV only, not in the site's Contact section. */
+  phone: {
+    display: "0962 274 0103",
+    href: "tel:+639622740103",
+  },
   /** Where "Download CV" goes. "/cv" is the printable CV page built from this file. */
   cvPath: "/cv",
   /** Your live URL, no trailing slash. Used for SEO, share previews and the sitemap. */

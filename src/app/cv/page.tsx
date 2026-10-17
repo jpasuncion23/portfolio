@@ -5,7 +5,7 @@ import Link from "next/link";
 import { contact, cv, education, experience, profile, projects, skills } from "@/lib/data";
 import { displayUrl, getInitials } from "@/lib/utils";
 import { PrintButton } from "@/components/cv/PrintButton";
-import { ArrowRightIcon, GlobeIcon, MapPinIcon, contactIcons } from "@/components/ui/icons";
+import { ArrowRightIcon, MapPinIcon, PhoneIcon, contactIcons } from "@/components/ui/icons";
 
 const description = `CV of ${profile.name}, ${cv.headline}, based in ${profile.location}.`;
 
@@ -27,11 +27,14 @@ const cvProjects = projects.some((project) => project.featured)
   ? projects.filter((project) => project.featured)
   : projects.slice(0, 3);
 
+// Email first, then phone, then the other links (Instagram is left off via showOnCv).
+const cvContacts = contact
+  .filter((link) => link.showOnCv !== false)
+  .map((link) => ({ label: link.label, href: link.href, text: displayUrl(link.href), Icon: contactIcons[link.icon] }));
 const contactRows = [
-  ...contact
-    .filter((link) => link.showOnCv !== false)
-    .map((link) => ({ label: link.label, href: link.href, text: displayUrl(link.href), Icon: contactIcons[link.icon] })),
-  { label: "Website", href: profile.siteUrl, text: displayUrl(profile.siteUrl), Icon: GlobeIcon },
+  ...cvContacts.slice(0, 1),
+  { label: "Phone", href: profile.phone.href, text: profile.phone.display, Icon: PhoneIcon },
+  ...cvContacts.slice(1),
 ];
 
 function dateRange(start?: string, end?: string) {
