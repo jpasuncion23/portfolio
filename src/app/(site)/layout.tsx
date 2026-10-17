@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 
 // Layout for the one-page portfolio. The navbar's #section links only work
@@ -7,6 +8,7 @@ export default function SiteLayout({ children }: LayoutProps<"/">) {
     <>
       <Navbar />
       {children}
+      <Footer />
     </>
   );
 }

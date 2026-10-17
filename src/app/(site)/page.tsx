@@ -1,4 +1,6 @@
 import { contact, hero, profile } from "@/lib/data";
+import About from "@/components/sections/About";
+import Contact from "@/components/sections/Contact";
 import Hero from "@/components/sections/Hero";
 import Work from "@/components/sections/Work";
 import { Section } from "@/components/ui/Section";
@@ -39,10 +41,10 @@ export default function Home() {
       />
 
       <Hero />
-      <ComingSoon id="about" label="About" />
+      <About />
       <Work />
       <ComingSoon id="skills" label="Skills" />
-      <ComingSoon id="contact" label="Contact" />
+      <Contact />
     </main>
   );
 }

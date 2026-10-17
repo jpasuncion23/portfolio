@@ -74,7 +74,7 @@ export const profile = {
   name: "John Patrick D. Asuncion",
   title: "Full-Stack Developer",
   intro:
-    "I design and build reliable web and mobile applications, from the database to the user interface. Placeholder: replace with one or two sentences about your work.",
+    "I build web, mobile and IoT applications, from the database and server logic to the interface people use every day.",
   location: "Baliuag, Bulacan, Philippines",
   availability: "Open to opportunities",
   /**
@@ -125,24 +125,52 @@ export const contact: ContactLink[] = [
   { label: "Instagram", href: "https://www.instagram.com/jp.asuncionn", display: "@jp.asuncionn", icon: "instagram" },
 ];
 
-export const stats: Stat[] = [
-  { value: 3, suffix: "+", label: "Years coding" },
-  { value: 12, suffix: "+", label: "Projects shipped" },
-  { value: 8, label: "Technologies used daily" },
-  { value: 100, suffix: "%", label: "Commitment" },
-];
+export const contactSection = {
+  eyebrow: "Contact",
+  title: "Get in touch",
+  description:
+    "Have a project, a role or a question in mind? Email is the quickest way to reach me, and I'm also on GitHub and Instagram.",
+  emailLabel: "Email",
+  sendEmail: "Send an email",
+  copyEmail: "Copy address",
+  copiedEmail: "Copied",
+  cvTitle: "Curriculum vitae",
+  cvDescription: "One-page CV, ready to print or save as PDF",
+};
 
 // ---------- About ----------
 
 export const about = {
-  heading: "A bit about me",
+  eyebrow: "About",
+  heading: "About me",
   paragraphs: [
-    "Placeholder paragraph. Describe how you got into development and what kind of problems you enjoy solving.",
-    "Placeholder paragraph. Mention what you're focused on right now and what you're looking for next.",
+    "I'm John Patrick D. Asuncion, a full-stack developer from Baliuag, Bulacan, Philippines. I build web, mobile and IoT applications and usually work across the whole stack: database design, server logic and the interface people use.",
+    "My recent work includes an online store with GCash payments and a delivery workflow, a Flutter marketplace for gamers with tournament brackets, and the web dashboard for CrayThrive, a team-built IoT system that monitors crayfish tanks.",
+    "I care about software that keeps working when real people use it: checkouts that can't oversell stock, access rules enforced by the database, and dashboards that flag problems before they grow.",
   ],
+  /** "What I build" list in the About section. */
+  focusTitle: "What I build",
+  focus: [
+    {
+      title: "Web applications",
+      description: "Storefronts and admin dashboards with sign-in, payments, email notifications and reports.",
+      tech: "React · Next.js · Supabase",
+    },
+    {
+      title: "Mobile apps",
+      description: "Cross-platform apps with real-time chat, role-based access and live data.",
+      tech: "Flutter · Firebase",
+    },
+    {
+      title: "IoT dashboards",
+      description: "Web views for sensor readings, alerts and thresholds coming from connected devices.",
+      tech: "Supabase · Recharts",
+    },
+  ],
+  availabilityTitle: "Currently",
   /** Short facts shown on the profile cards (location and availability come from `profile`). */
   facts: [
-    { label: "Focus", value: "Web and mobile applications" },
+    { label: "Focus", value: "Web, mobile and IoT applications" },
     { label: "Languages", value: "English, Filipino" },
   ],
 };
@@ -219,6 +247,17 @@ export const projects: Project[] = [
     image: "/images/projects/craythrive-landing.png",
     featured: true,
   },
+];
+
+/**
+ * Counters in the About section. Worked out from `projects`, so they stay
+ * accurate as projects are added or removed.
+ */
+export const stats: Stat[] = [
+  { value: projects.length, label: "Featured projects" },
+  { value: projects.filter((project) => project.link).length, label: "Live deployments" },
+  { value: new Set(projects.flatMap((project) => project.tech)).size, label: "Technologies used" },
+  { value: new Set(projects.map((project) => project.category)).size, label: "Platforms" },
 ];
 
 // ---------- Skills ----------
