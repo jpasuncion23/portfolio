@@ -86,7 +86,8 @@ export default function CvPage() {
                     <IconDot>
                       <Icon className="size-3" />
                     </IconDot>
-                    <a href={href} className="min-w-0 pt-px break-all text-zinc-700 hover:text-zinc-950">
+                    {/* break-words wraps long links at hyphens/slashes instead of mid-word. */}
+                    <a href={href} className="min-w-0 pt-px break-words text-zinc-700 hover:text-zinc-950">
                       <span className="sr-only">{label}: </span>
                       {text}
                     </a>

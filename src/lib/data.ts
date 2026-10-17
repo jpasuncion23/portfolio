@@ -134,6 +134,12 @@ export const contact: ContactLink[] = [
   { label: "Email", href: "mailto:jpasuncion2328@gmail.com", display: "jpasuncion2328@gmail.com", icon: "email" },
   { label: "GitHub", href: "https://github.com/jpasuncion23", display: "@jpasuncion23", icon: "github" },
   {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/john-patrick-asuncion-b57917444",
+    display: "John Patrick Asuncion",
+    icon: "linkedin",
+  },
+  {
     label: "Instagram",
     href: "https://www.instagram.com/jp.asuncionn",
     display: "@jp.asuncionn",
@@ -146,7 +152,7 @@ export const contactSection = {
   eyebrow: "Contact",
   title: "Get in touch",
   description:
-    "Have a project, a role or a question in mind? Email is the quickest way to reach me, and I'm also on GitHub and Instagram.",
+    "Have a project, a role or a question in mind? Email is the quickest way to reach me, and I'm also on GitHub, LinkedIn and Instagram.",
   emailLabel: "Email",
   /** Pre-filled subject for emails started from the site. */
   emailSubject: "Inquiry from your portfolio",
