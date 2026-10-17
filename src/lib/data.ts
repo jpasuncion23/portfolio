@@ -150,6 +150,12 @@ export const workSection = {
   filterAll: "All",
   liveLabel: "Live site",
   sourceLabel: "Source code",
+  /** Labels for the strip under each project image. */
+  meta: {
+    type: "Type",
+    role: "Role",
+    stack: "Stack",
+  },
 };
 
 export const projects: Project[] = [
