@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { workSection, type Project } from "@/lib/data";
+import { categoryTypes, workSection, type Project } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon, ExternalLinkIcon, GitHubIcon } from "@/components/ui/icons";
@@ -7,7 +7,7 @@ import { CheckIcon, ExternalLinkIcon, GitHubIcon } from "@/components/ui/icons";
 /** `reverse` puts the image on the right on wide screens, so a list of cards alternates. */
 export function ProjectCard({ project, reverse = false }: { project: Project; reverse?: boolean }) {
   const meta = [
-    { label: workSection.meta.type, value: `${project.category} app` },
+    { label: workSection.meta.type, value: categoryTypes[project.category] },
     { label: workSection.meta.role, value: project.role },
     { label: workSection.meta.stack, value: `${project.tech.length} technologies` },
   ];

@@ -21,8 +21,15 @@ export type Stat = {
   label: string;
 };
 
-export const projectCategories = ["Web", "Mobile"] as const;
+export const projectCategories = ["Web", "Mobile", "IoT"] as const;
 export type ProjectCategory = (typeof projectCategories)[number];
+
+/** How each category reads in the "Type" cell under a project image. */
+export const categoryTypes: Record<ProjectCategory, string> = {
+  Web: "Web app",
+  Mobile: "Mobile app",
+  IoT: "IoT system",
+};
 
 export type Project = {
   name: string;
@@ -192,6 +199,24 @@ export const projects: Project[] = [
     ],
     repo: "https://github.com/jpasuncion23/gamelink",
     image: "/images/projects/gamelink-home.png",
+    featured: true,
+  },
+  {
+    name: "CrayThrive",
+    description:
+      "A smart aquaculture system for crayfish keepers that combines IoT tank sensors, a mobile app and a web dashboard. Team project; I built the web dashboard.",
+    role: "Web dashboard developer",
+    tech: ["React", "Vite", "JavaScript", "Supabase", "Recharts", "React Router"],
+    category: "IoT",
+    highlights: [
+      "Tank monitoring with temperature, pH, turbidity, water level and ammonia readings from the tank sensors",
+      "Alerts for out-of-range readings, feeding and pump activity, with adjustable thresholds",
+      "Ammonia reading records captured by an ESP32-CAM, with a history view",
+      "Reports with charts, CSV export and print, plus management of a crayfish-only marketplace",
+    ],
+    // The source lives in a private team repository, so only the live site is linked.
+    link: "https://www.craythrive.site",
+    image: "/images/projects/craythrive-landing.png",
     featured: true,
   },
 ];
