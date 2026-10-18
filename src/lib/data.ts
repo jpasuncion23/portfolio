@@ -96,7 +96,7 @@ export const profile = {
   /** Where "Download CV" goes. "/cv" is the printable CV page built from this file. */
   cvPath: "/cv",
   /** Your live URL, no trailing slash. Used for SEO, share previews and the sitemap. */
-  siteUrl: "https://your-name.vercel.app",
+  siteUrl: "https://jp-asuncion.vercel.app",
   /** Shown by Google and in link previews. Aim for 120–160 characters. */
   siteDescription:
     "Portfolio of John Patrick D. Asuncion, an IT student at National University building web and mobile applications.",
