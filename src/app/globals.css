@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 /*
-  Design tokens. The site is dark-only; change the accent here and it
-  flows through every `bg-accent`, `text-accent`, `border-accent` utility.
+  Design tokens. These are the dark theme (the default); the light theme
+  overrides them below via [data-theme="light"] on <html>. Every utility
+  such as `bg-surface` or `text-accent` follows whichever theme is active.
 */
 @theme {
   --color-background: #0a0c10;
@@ -13,6 +14,8 @@
   --color-muted: #9097a6;
   --color-accent: #2dd4bf;
   --color-accent-foreground: #04201c;
+  /* Second glow colour in the page background. */
+  --color-glow: #6366f1;
 
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 
@@ -31,6 +34,20 @@
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+/* Light theme. The accent is a deeper teal so text and buttons stay readable on white. */
+:root[data-theme="light"] {
+  --color-background: #f5f7fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #eef2f6;
+  --color-border: #dde3ea;
+  --color-foreground: #0f172a;
+  --color-muted: #566072;
+  --color-accent: #0f766e;
+  --color-accent-foreground: #ffffff;
+  --color-glow: #818cf8;
+  color-scheme: light;
 }
 
 html {
@@ -71,7 +88,14 @@ body {
   }
 }
 
-/* Faint grid behind the hero, fading out toward the edges. */
+/* Dot pattern for the page background (components/layout/SiteBackground.tsx), fading out downward. */
+.bg-dots {
+  background-image: radial-gradient(color-mix(in oklab, var(--color-foreground) 16%, transparent) 1px, transparent 1.5px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 25%, transparent 75%);
+}
+
+/* Faint grid, used behind project cards that have no screenshot. */
 .bg-grid {
   background-image:
     linear-gradient(to right, color-mix(in oklab, var(--color-border) 60%, transparent) 1px, transparent 1px),

@@ -41,7 +41,7 @@ export function ProjectList() {
                   "inline-flex h-10 items-center gap-2 rounded-full border px-4 text-sm transition-colors",
                   selected
                     ? "border-accent/50 bg-accent/10 text-foreground"
-                    : "border-border text-muted hover:border-accent/30 hover:text-foreground",
+                    : "border-border bg-surface/60 text-muted hover:border-accent/30 hover:text-foreground",
                 )}
               >
                 {tab.label}

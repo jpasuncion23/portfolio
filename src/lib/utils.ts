@@ -42,6 +42,8 @@ export function gmailComposeUrl(to: string, subject?: string) {
  */
 export const themeColors = {
   background: "#0a0c10",
+  /** Light theme background (the light theme itself lives in globals.css). */
+  backgroundLight: "#f5f7fa",
   surface: "#12151c",
   border: "#262b36",
   foreground: "#e8eaef",

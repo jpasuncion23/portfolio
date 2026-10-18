@@ -7,13 +7,8 @@ import { ArrowRightIcon, DownloadIcon, MapPinIcon, contactIcons } from "@/compon
 
 export default function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden pt-16">
-      <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10 opacity-60" />
-      <div
-        aria-hidden="true"
-        className="absolute top-20 left-1/2 -z-10 h-72 w-xl max-w-full -translate-x-1/2 rounded-full bg-accent/8 blur-3xl"
-      />
-
+    // The dots and glows behind the hero come from SiteBackground in the (site) layout.
+    <section id="top" className="relative pt-16">
       <Container className="grid min-h-[calc(100svh-4rem)] items-center gap-12 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
         <div>
           <h1 className="animate-fade-up text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">

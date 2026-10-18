@@ -171,9 +171,10 @@ export const about = {
   eyebrow: "About",
   heading: "About me",
   paragraphs: [
-    "I'm John Patrick D. Asuncion, an Information Technology student at National University and a full-stack developer from Baliuag, Bulacan, Philippines. I build web and mobile applications and usually work across the whole stack: database design, server logic and the interface people use.",
-    "My recent work includes an online store with GCash payments and a delivery workflow, a service-booking marketplace built with PHP and MySQL, a Flutter marketplace for gamers with tournament brackets, and the web dashboard for CrayThrive, a team project that helps crayfish keepers monitor their tanks.",
-    "I care about software that keeps working when real people use it: checkouts that can't oversell stock, access rules enforced by the database, and dashboards that flag problems before they grow.",
+    "I'm John Patrick D. Asuncion, an Information Technology student at National University from Baliuag, Bulacan, Philippines.",
+    "I am an aspiring IT professional specializing in Web Development, with hands-on experience in building web and mobile applications, integrating AI-powered features, and developing practical digital solutions.",
+    "Beyond my specialization, I am eager to explore different fields of Information Technology, expand my technical knowledge, and continuously enhance my problem-solving and development skills.",
+    "Driven by curiosity and a passion for continuous learning, I strive to become a versatile and adaptable IT professional who embraces new challenges, values collaboration, and contributes to meaningful technological innovations.",
   ],
   /** "What I build" list in the About section. */
   focusTitle: "What I build",

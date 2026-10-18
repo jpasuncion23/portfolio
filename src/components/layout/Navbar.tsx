@@ -6,6 +6,7 @@ import { cn, getInitials } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { CloseIcon, MenuIcon } from "@/components/ui/icons";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 const initials = getInitials(profile.name);
 
@@ -116,22 +117,25 @@ export default function Navbar() {
             </ul>
           </nav>
 
-          <div className="hidden md:block">
-            <Button href="#contact" size="sm">
-              {navCta}
-            </Button>
-          </div>
+          <div className="flex items-center gap-2">
+            <ThemeToggle className="grid size-11 place-items-center rounded-lg border border-border text-muted transition-colors hover:border-accent/50 hover:text-foreground md:size-10" />
+            <div className="hidden md:block">
+              <Button href="#contact" size="sm">
+                {navCta}
+              </Button>
+            </div>
 
-          <button
-            type="button"
-            onClick={() => setOpen((value) => !value)}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            aria-label={open ? "Close menu" : "Open menu"}
-            className="grid size-11 place-items-center rounded-lg border border-border text-foreground md:hidden"
-          >
-            {open ? <CloseIcon className="size-5" /> : <MenuIcon className="size-5" />}
-          </button>
+            <button
+              type="button"
+              onClick={() => setOpen((value) => !value)}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              aria-label={open ? "Close menu" : "Open menu"}
+              className="grid size-11 place-items-center rounded-lg border border-border text-foreground md:hidden"
+            >
+              {open ? <CloseIcon className="size-5" /> : <MenuIcon className="size-5" />}
+            </button>
+          </div>
         </Container>
 
         <div id="mobile-menu" className={cn("border-t border-border md:hidden", !open && "hidden")}>
